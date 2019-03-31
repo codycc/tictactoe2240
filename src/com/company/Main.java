@@ -16,15 +16,22 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.event.EventHandler;
 
+
 import java.awt.*;
 
 public class Main extends Application {
 
-    private GridPane createGrid() {
+
+
+
+    private GridPane createGrid(User player1, User player2) {
         int offset = 300;
         int count = 1;
         GridPane grid = new GridPane();
+
         grid.setPrefSize(900,900);
+
+        // creating square instances and setting them in the grid
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
                 Square square = new Square(false, count, "");
@@ -36,16 +43,32 @@ public class Main extends Application {
                 square.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        System.out.println(square.getNumber());
+//                        System.out.println(square.getNumber());
+                        if (player1.getIsCurrentTurn()) {
+                            player1.setIsCurrentTurn(false);
+                            player2.setIsCurrentTurn(true);
+                            square.displayO();
+                        } else {
+                            player2.setIsCurrentTurn(false);
+                            player1.setIsCurrentTurn(true);
+                            square.displayX();
+                        }   
+
                     }
                 });
 
             }
         }
+
+        // setting labels
+//        Label player1Lbl = new Label(player1.getName());
+//        Label player2Lbl = new Label(player2.getName());
+//        grid.add(player1Lbl,0,0);
+//        grid.add(player2Lbl,1,0);
         return grid;
     }
 
-    private GridPane boardStart(Stage primaryStage) {
+    private GridPane BoardStart(Stage primaryStage) {
         GridPane pane = new GridPane();
         //TextField userName = new TextField();
         Label player1Lbl = new Label("Player 1, please enter your name");
@@ -57,7 +80,7 @@ public class Main extends Application {
         startButton.setOnAction(e -> {
             User player1 = new User(true, player1Txt.getText(), "X");
             User player2 = new User(false, player2Txt.getText(), "O");
-            primaryStage.setScene(new Scene(createGrid()));
+            primaryStage.setScene(new Scene(createGrid(player1,player2)));
             primaryStage.show();
         });
 
@@ -75,68 +98,18 @@ public class Main extends Application {
         //these will be for the grid
         //buttons don't currently do anything, this is just to make sure the grid works
         primaryStage.setTitle("Tic-Tac-Toe");
-        primaryStage.setScene(new Scene(boardStart(primaryStage)));
+        primaryStage.setScene(new Scene(BoardStart(primaryStage)));
         primaryStage.show();
-
-
-
-//        Button button1 = new Button();
-//        Button button2 = new Button();
-//        Button button3 = new Button();
-//        Button button4 = new Button();
-//        Button button5 = new Button();
-//        Button button6 = new Button();
-//        Button button7 = new Button();
-//        Button button8 = new Button();
-//        Button button9 = new Button();
-//        button1.setPrefSize(300,300);
-//        button2.setPrefSize(300,300);
-//        button3.setPrefSize(300,300);
-//        button4.setPrefSize(300,300);
-//        button5.setPrefSize(300,300);
-//        button6.setPrefSize(300,300);
-//        button7.setPrefSize(300,300);
-//        button8.setPrefSize(300,300);
-//        button9.setPrefSize(300,300);
-//        grid.getRowConstraints().add(new RowConstraints(300));
-//        grid.getRowConstraints().add(new RowConstraints(300));
-//        grid.getRowConstraints().add(new RowConstraints(300));
-//        grid.getColumnConstraints().add(new ColumnConstraints(300));
-//        grid.getColumnConstraints().add(new ColumnConstraints(300));
-//        grid.getColumnConstraints().add(new ColumnConstraints(300));
-//        grid.add(button1, 0, 0);
-//        grid.add(button2, 1, 0);
-//        grid.add(button3, 2, 0);
-//        grid.add(button4, 0, 1);
-//        grid.add(button5, 1, 1);
-//        grid.add(button6, 2, 1);
-//        grid.add(button7, 0, 2);
-//        grid.add(button8, 1, 2);
-//        grid.add(button9, 2, 2);
-//        grid.setGridLinesVisible(true);
-//        Scene scene = new Scene(grid);
-
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
     }
 
     public static void main(String[] args) {
 
         launch(args);
 
-
     }
 }
 
 
-
-
-//
-//class BoardStart {
-    //this pane should pop up when the game starts, and will take user names
-    //not 100% sure where to put them yet
-
-//}
 
 
 //the commented methods should go somewhere

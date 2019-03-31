@@ -5,8 +5,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
 import java.awt.*;
@@ -15,6 +13,7 @@ public class Square extends StackPane {
     private Boolean isAlreadyChosen;
     private Integer number;
     private String content;
+    private Text text = new Text();
 
 
     public Square(Boolean isAlreadyChosen, Integer number, String content) {
@@ -23,10 +22,19 @@ public class Square extends StackPane {
         setContent(content);
         Rectangle border = new Rectangle(300,300);
         border.setFill(null);
+        text.setFont(Font.font(68));
         border.setStroke(Color.BLACK);
-        getChildren().addAll(border);
+        getChildren().addAll(border,text);
     }
 
+
+    public void displayX() {
+        text.setText("X");
+    }
+
+    public void displayO() {
+        text.setText("O");
+    }
 
     public Boolean getIsAlreadyChosen() {
         return this.getIsAlreadyChosen();

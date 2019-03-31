@@ -5,7 +5,7 @@ public class Board {
 
 
     public Board(Boolean isGameOver) {
-        isGameOver = isGameOver;
+        setIsGameOver(isGameOver);
     }
 
     public Boolean getIsGameOver() {

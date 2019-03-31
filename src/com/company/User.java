@@ -7,10 +7,12 @@ public class User {
 
 
     public User(Boolean isCurrentTurn, String name, String symbol) {
-        isCurrentTurn = isCurrentTurn;
-        name = name;
-        symbol = symbol;
+        setIsCurrentTurn(isCurrentTurn);
+        setName(name);
+        setSymbol(symbol);
     }
+
+
 
     public String getName() {
         return this.name;
