@@ -28,33 +28,41 @@ public class Main extends Application {
         int offset = 300;
         int count = 0;
         Integer[] magicNumbers = {4,3,8,9,5,1,2,7,6};
-
+        Square[] squares = new Square[9];
         GridPane grid = new GridPane();
 
         grid.setPrefSize(900,900);
-
+        Board gameBoard = new Board(false);
         // creating square instances and setting them in the grid
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
                 Square square = new Square(false, count, magicNumbers[count]);
-                count += 1 ;
+                squares[count] = square;
                 square.setTranslateY(x * offset);
                 square.setTranslateX(y * offset);
                 grid.getChildren().add(square);
-                System.out.println("Age: " + square.getNumber());
+                count += 1 ;
                 square.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
                         System.out.println(square.getMagicNumber());
-                        if (player1.getIsCurrentTurn()) {
+                        if (player1.getIsCurrentTurn()  ) {
                             player1.setIsCurrentTurn(false);
                             player2.setIsCurrentTurn(true);
                             square.displayUserSymbol(player1.getSymbol());
-                        } else {
+
+                        } else if (player2.getIsCurrentTurn() )  {
                             player2.setIsCurrentTurn(false);
                             player1.setIsCurrentTurn(true);
                             square.displayUserSymbol(player2.getSymbol());
+
+                        } else {
+
                         }
+                        square.setIsAlreadyChosen(true);
+                        gameBoard.checkIfGameWon(squares,player1);
+
+
 
                     }
                 });

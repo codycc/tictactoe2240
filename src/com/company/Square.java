@@ -16,6 +16,7 @@ public class Square extends StackPane {
     private Text text = new Text();
 
 
+
     public Square(Boolean isAlreadyChosen, Integer number, Integer magicNumber) {
         setIsAlreadyChosen(isAlreadyChosen);
         setNumber(number);
@@ -34,7 +35,7 @@ public class Square extends StackPane {
 
 
     public Boolean getIsAlreadyChosen() {
-        return this.getIsAlreadyChosen();
+        return this.isAlreadyChosen;
     }
 
     public Integer getMagicNumber() {
