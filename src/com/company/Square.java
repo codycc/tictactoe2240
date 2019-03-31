@@ -12,14 +12,14 @@ import java.awt.*;
 public class Square extends StackPane {
     private Boolean isAlreadyChosen;
     private Integer number;
-    private String content;
+    private Integer magicNumber;
     private Text text = new Text();
 
 
-    public Square(Boolean isAlreadyChosen, Integer number, String content) {
+    public Square(Boolean isAlreadyChosen, Integer number, Integer magicNumber) {
         setIsAlreadyChosen(isAlreadyChosen);
         setNumber(number);
-        setContent(content);
+        setMagicNumber(magicNumber);
         Rectangle border = new Rectangle(300,300);
         border.setFill(null);
         text.setFont(Font.font(68));
@@ -28,20 +28,17 @@ public class Square extends StackPane {
     }
 
 
-    public void displayX() {
-        text.setText("X");
+    public void displayUserSymbol(String symbol) {
+        text.setText(symbol);
     }
 
-    public void displayO() {
-        text.setText("O");
-    }
 
     public Boolean getIsAlreadyChosen() {
         return this.getIsAlreadyChosen();
     }
 
-    public String getContent() {
-        return this.content;
+    public Integer getMagicNumber() {
+        return this.magicNumber;
     }
 
     public Integer getNumber() {
@@ -56,7 +53,7 @@ public class Square extends StackPane {
         this.number = number;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setMagicNumber(Integer magicNumber) {
+        this.magicNumber = magicNumber;
     }
 }

@@ -4,6 +4,7 @@ public class User {
     private Boolean isCurrentTurn;
     private String name;
     private String symbol;
+    private Integer currentIntegerScore;
 
 
     public User(Boolean isCurrentTurn, String name, String symbol) {
@@ -11,7 +12,6 @@ public class User {
         setName(name);
         setSymbol(symbol);
     }
-
 
 
     public String getName() {
@@ -24,6 +24,11 @@ public class User {
 
     public Boolean getIsCurrentTurn() {
         return this.isCurrentTurn;
+    }
+
+
+    public void setCurrentIntegerScore(Integer currentIntegerScore) {
+        this.currentIntegerScore += currentIntegerScore;
     }
 
     public void setName(String name) {

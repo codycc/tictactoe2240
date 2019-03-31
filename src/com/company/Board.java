@@ -8,6 +8,12 @@ public class Board {
         setIsGameOver(isGameOver);
     }
 
+
+
+    public Boolean checkIfGameWon(Square square, User user) {
+        return true;
+    }
+
     public Boolean getIsGameOver() {
         return this.isGameOver;
     }

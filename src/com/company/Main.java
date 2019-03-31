@@ -26,7 +26,9 @@ public class Main extends Application {
 
     private GridPane createGrid(User player1, User player2) {
         int offset = 300;
-        int count = 1;
+        int count = 0;
+        Integer[] magicNumbers = {4,3,8,9,5,1,2,7,6};
+
         GridPane grid = new GridPane();
 
         grid.setPrefSize(900,900);
@@ -34,25 +36,25 @@ public class Main extends Application {
         // creating square instances and setting them in the grid
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
-                Square square = new Square(false, count, "");
-                count += 1;
-                square.setTranslateY(y * offset);
-                square.setTranslateX(x * offset);
+                Square square = new Square(false, count, magicNumbers[count]);
+                count += 1 ;
+                square.setTranslateY(x * offset);
+                square.setTranslateX(y * offset);
                 grid.getChildren().add(square);
                 System.out.println("Age: " + square.getNumber());
                 square.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-//                        System.out.println(square.getNumber());
+                        System.out.println(square.getMagicNumber());
                         if (player1.getIsCurrentTurn()) {
                             player1.setIsCurrentTurn(false);
                             player2.setIsCurrentTurn(true);
-                            square.displayO();
+                            square.displayUserSymbol(player1.getSymbol());
                         } else {
                             player2.setIsCurrentTurn(false);
                             player1.setIsCurrentTurn(true);
-                            square.displayX();
-                        }   
+                            square.displayUserSymbol(player2.getSymbol());
+                        }
 
                     }
                 });
@@ -109,22 +111,6 @@ public class Main extends Application {
     }
 }
 
-
-
-
-//the commented methods should go somewhere
-/* need to include a handler method for each button, or even better, a handler for all 9 buttons!
-    public void setTileSymbol(){
-        if (Tile.getIsAlreadyChosen() == false){
-            if (player1.getIsCurrentTurn() == true){
-              button.setLabel(player1.getSymbol());
-            }
-            else if (player2.getIsCurrentTurn() == true){
-                button.setLabel(player2.getSymbol());
-            }
-        }
-    }
-*/
 /* public void turnEnd(){
     if (gameOver() == true){
         //displays a message that indicates the turn player wins
