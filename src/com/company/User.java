@@ -4,11 +4,12 @@ public class User {
     private Boolean isCurrentTurn;
     private String name;
     private String symbol;
-    private Integer currentIntegerScore;
+    private Integer inputNumber;
 
 
-    public User(Boolean isCurrentTurn, String name, String symbol) {
+    public User(Boolean isCurrentTurn, String name, String symbol, Integer inputNumber) {
         setIsCurrentTurn(isCurrentTurn);
+        setInputNumber(inputNumber);
         setName(name);
         setSymbol(symbol);
     }
@@ -26,10 +27,11 @@ public class User {
         return this.isCurrentTurn;
     }
 
-
-    public void setCurrentIntegerScore(Integer currentIntegerScore) {
-        this.currentIntegerScore += currentIntegerScore;
+    public Integer getInputNumber() {
+        return this.inputNumber;
     }
+
+
 
     public void setName(String name) {
         this.name = name;
@@ -43,5 +45,8 @@ public class User {
         this.isCurrentTurn = isCurrentTurn;
     }
 
+    public void setInputNumber(Integer inputNumber) {
+        this.inputNumber = inputNumber;
+    }
 
 }
