@@ -32,7 +32,7 @@ public class Main extends Application {
         // creating square instances and setting them in the grid
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
-                Square square = new Square(false, count, 0);
+                Square square = new Square(false, count, "");
                 squares[count] = square;
                 square.setTranslateY(x * offset);
                 square.setTranslateX(y * offset);
@@ -45,12 +45,12 @@ public class Main extends Application {
                             player1.setIsCurrentTurn(false);
                             player2.setIsCurrentTurn(true);
                             square.displayUserSymbol(player1.getSymbol());
-                            square.setInputNumber(player1.getInputNumber());
+                            square.setInputSymbol(player1.getSymbol());
                         } else if (player2.getIsCurrentTurn() )  {
                             player2.setIsCurrentTurn(false);
                             player1.setIsCurrentTurn(true);
                             square.displayUserSymbol(player2.getSymbol());
-                            square.setInputNumber(player2.getInputNumber());
+                            square.setInputSymbol(player2.getSymbol());
                         } else {
 
                         }

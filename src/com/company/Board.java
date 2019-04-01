@@ -19,26 +19,22 @@ public class Board {
 
     public Boolean checkHorizontalRows(Square[] squares) {
         Integer gridCount = 1;
-        Integer userTallyCount = 0;
+        String winningString = "";
         for (Integer x = 0; x <9; x++) {
-            System.out.println(squares[x].getNumber());
-
-
-
             if (squares[x].getIsAlreadyChosen()) {
-                userTallyCount += squares[x].getInputNumber();
-                System.out.println(userTallyCount + "tally");
+                winningString += squares[x].getInputSymbol();
+                System.out.println(winningString + "tally");
             }
 
             if (gridCount % 3 == 0 ) {
                 System.out.println(gridCount + "grid count");
-                if (userTallyCount == 3) {
+                if (winningString.equals("XXX")) {
                     System.out.println("Player 1 Won");
                 }
-                if (userTallyCount == 6) {
+                if (winningString.equals("OOO")) {
                     System.out.println("Player 2 Won");
                 }
-                userTallyCount = 0;
+                winningString = "";
             }
 
             gridCount += 1;
