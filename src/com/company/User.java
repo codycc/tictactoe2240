@@ -6,7 +6,7 @@ public class User {
     private String symbol;
     private Integer inputNumber;
 
-
+    //constructor for user
     public User(Boolean isCurrentTurn, String name, String symbol, Integer inputNumber) {
         setIsCurrentTurn(isCurrentTurn);
         setInputNumber(inputNumber);
@@ -14,7 +14,7 @@ public class User {
         setSymbol(symbol);
     }
 
-
+    // getters
     public String getName() {
         return this.name;
     }
@@ -31,8 +31,7 @@ public class User {
         return this.inputNumber;
     }
 
-
-
+    // setters
     public void setName(String name) {
         this.name = name;
     }
